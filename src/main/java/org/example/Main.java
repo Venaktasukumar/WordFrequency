@@ -6,7 +6,8 @@ import java.util.logging.*;
 class Frequency{
     public static void main(String[] args) throws FileNotFoundException{
         Logger l= Logger.getLogger("com.api.jar");
-        File file=new File("C:/Users/Tringapps-User12/Documents/frequencyfile/text.txt");
+        String s="C:/Users/Tringapps-User12/Documents/frequencyfile/text.txt";
+        File file=new File(s);
         Scanner sc=new Scanner(file);
         HashMap<String,Integer> hash=new HashMap<String,Integer>();
         Queue<Map.Entry<String,Integer>> queue=new PriorityQueue<>((a,b)->{return b.getValue()-a.getValue();});
