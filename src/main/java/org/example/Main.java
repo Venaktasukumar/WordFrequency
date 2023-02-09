@@ -10,7 +10,6 @@ class Frequency{
         File file=new File(s);
         Scanner sc=new Scanner(file);
         HashMap<String,Integer> hash=new HashMap<String,Integer>();
-        Queue<Map.Entry<String,Integer>> queue=new PriorityQueue<>((a,b)->{return b.getValue()-a.getValue();});
         while(sc.hasNext()){
             String word=sc.next();
             if(hash.containsKey(word)){
@@ -20,12 +19,11 @@ class Frequency{
                 hash.put(word,1);
             }
         }
+        l.info("Before Sorting:");
         l.log(Level.INFO,()->""+hash);
-        queue.addAll(hash.entrySet());
-        for(Map.Entry<String,Integer> q:queue){
-            String k=q.getKey()+"->"+q.getValue();
-            l.info(k);
-        }
+        List<Map.Entry<String, Integer>> k= hash.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue())).toList();
+        l.info("After Sorting:");
+        l.log(Level.INFO,()->""+k);
 
     }
 }
